@@ -81,6 +81,7 @@ My first thoughts after looking at the dataset made me think that `region` and `
 |biology| End of Biology, percent of students at approaches grade level or above for Biology|
 |history| End of U.S. History, percent of students at approaches grade level or above for U.S. History|
 |ebel| EB/EL Current and Monitored, percent of students in the dual-language program that enables emergent bilingual (EB) students/English learners (ELs) to become proficient in listening, speaking, reading, and writing in the English language through the development of literacy and academic skills in the primary language and English.|
+|econdis| students that are from homes that are below the poverty line
 |salary| Average Actual Salary, Average amount teachers are being paid in dollars|
 |high_edu| Percent of teachers with a masters or doctorate degree|
 |ratio| Count of the number of students per one teacher|
