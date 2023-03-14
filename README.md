@@ -1,7 +1,7 @@
 # Capstone_readiness
 
 # Project Description:
-Our youth matters. In Texas we want to examine how well high school students are doing and what they are doing with their future. We will explore public high schools from around Texas and build a model to predict college, military, and career readiness.
+Our youth matters. In Texas, the State of Texas Assessment of Academic Readiness (STAAR) exam is used to measure student learning at the end of the school year. Scores on these exams are used to calculate school accountability ratings which ensures that only high performing schools stay open. We want to use the publically available data to identify key features of schools that have the largest impact on the STAAR exams. After exploration, we use a machine learning algorithm to predict the most likely STAAR exam outcome based on the features we identified as having the largest impact. The scope of this project is limited to Texas High Schools, but may be applied to other types of schools as well.
 
 # Project Goals:
 * Identify drivers of STAAR scores
