@@ -83,7 +83,7 @@ def clean_df(df):
     df = rename_cols(df)
     
     # Columns to loop
-    loop_columns = list(df.columns[2:])
+    loop_columns = list(df.columns[1:])
     
     # Loop to remover '%' sign and change to float data type
     for col in loop_columns:
