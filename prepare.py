@@ -48,7 +48,7 @@ def rename_cols(df):
                          'ex_10': 'teacher_exp_6to10',
                          'ex_1120': 'teacher_exp_11to20',
                          'ex_2130': 'teacher_exp_21tp30',
-                         'ex_plus' : 'teacher_exp_11plus',
+                         'ex_plus' : 'teacher_exp_over30',
                          'extra_fund': 'extracurricular_expend',
                          'all_fund': 'total_expend',
                          'ratio': 'student_teacher_ratio'
