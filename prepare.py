@@ -75,3 +75,12 @@ def rename_cols(df):
                          'ratio': 'student_teacher_ratio'
                          })
     return df
+
+
+
+def remove_symbols(df):
+    rows = df.columns.to_list()
+    for row in rows:
+        df = df[df[row] != '-         ']           
+        df = df[df[row] != '*         ']
+    return df
