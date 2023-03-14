@@ -73,6 +73,12 @@ def clean_df(df):
     and converting all columns to a numerical data type.
     '''
     
+    # Load CSV
+    df = pd.read_csv('school_data.csv', index_col=0)
+
+    # Reset Index
+    df = df.reset_index().drop('index', axis=1)
+
     # Covert dollar signs and special characters
     df = change_dollars(df)
     
