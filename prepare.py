@@ -58,3 +58,20 @@ def remove_percent_sign(df):
             continue
             
     return df
+
+
+
+def rename_cols(df):
+    df = df.rename(columns= {'eng1': 'english_1',
+                         'eng2': 'english_2',
+                         'ebel': 'bilingual_or_english_learner',
+                         'ex_5' : 'teacher_exp_5',
+                         'ex_10': 'teacher_exp_6to10',
+                         'ex_1120': 'teacher_exp_11to20',
+                         'ex_2130': 'teacher_exp_21tp30',
+                         'ex_plus' : 'teacher_exp_11plus',
+                         'extra_fund': 'extracurricular_expend',
+                         'all_fund': 'total_expend',
+                         'ratio': 'student_teacher_ratio'
+                         })
+    return df
