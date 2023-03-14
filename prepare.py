@@ -40,27 +40,6 @@ def change_dollars(df):
 
 #--------------------------------------------------------------------------------------------------
 
-def remove_percent_sign(df):
-    
-    '''
-    Remove percent sign from all string values in the columns of a pandas DataFrame.
-    '''
-
-    # Columns to loop
-    loop_columns = list(df.columns[2:])
-    
-    # Loop to remover '%' sign
-    for col in loop_columns:
-        try:
-            df[col] = df[col].str.replace('%','')
-            
-        except:
-            continue
-            
-    return df
-
-
-
 def rename_cols(df):
     df = df.rename(columns= {'eng1': 'english_1',
                          'eng2': 'english_2',
@@ -76,7 +55,7 @@ def rename_cols(df):
                          })
     return df
 
-
+#--------------------------------------------------------------------------------------------------
 
 def remove_symbols(df):
     rows = df.columns.to_list()
@@ -84,3 +63,36 @@ def remove_symbols(df):
         df = df[df[row] != '-         ']           
         df = df[df[row] != '*         ']
     return df
+
+#--------------------------------------------------------------------------------------------------
+
+def clean_df(df):
+    
+    '''
+    Cleans dataframe by replacing special characters with empty space
+    and converting all columns to a numerical data type.
+    '''
+    
+    # Covert dollar signs and special characters
+    df = change_dollars(df)
+    
+    # Remove '*' and '-'
+    df = remove_symbols(df)
+    
+    # Rename Columns
+    df = rename_cols(df)
+    
+    # Columns to loop
+    loop_columns = list(df.columns[2:])
+    
+    # Loop to remover '%' sign and change to float data type
+    for col in loop_columns:
+        try:
+            df[col] = df[col].str.replace('%','').astype(float)
+            
+        except:
+            continue
+            
+    return df
+
+#--------------------------------------------------------------------------------------------------
