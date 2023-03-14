@@ -25,11 +25,11 @@ def get_features(school_id):
     
     chinaspring={
         'school_id': [school_id],
-        'eng1': [soup.find_all('td', class_='r t data')[2].text], 
-        'eng2': [soup.find_all('td', class_='r t data')[98].text], 
-        'algebra': [soup.find_all('td', class_='r t data')[194].text],
-        'biology': [soup.find_all('td', class_='r t data')[290].text], 
-        'history': [soup.find_all('td', class_='r t data')[386].text], 
+        'eng1': [soup1.find_all('td', class_='r t data')[2].text], 
+        'eng2': [soup1.find_all('td', class_='r t data')[98].text], 
+        'algebra': [soup1.find_all('td', class_='r t data')[194].text],
+        'biology': [soup1.find_all('td', class_='r t data')[290].text], 
+        'history': [soup1.find_all('td', class_='r t data')[386].text], 
         'ebel': [soup2.find_all('td', class_='r b data')[241].text],
         'econdis': [soup2.find_all('td', class_='r b data')[217].text],
         'salary': [soup3.find_all('td', class_='r b data')[-43].text],
