@@ -31,11 +31,11 @@ def convert_dollars_to_float(x):
 #--------------------------------------------------------------------------------------------------
 
 def change_dollars(df):
-    school = school[school['salary'] != '-']
-    school = school[school['salary'] != '?']
-    school.salary = convert_dollars_to_float(school.salary)
-    school.all_fund = convert_dollars_to_float(school.all_fund)
-    school.extra_fund = convert_dollars_to_float(school.extra_fund)
+    df = df[df['salary'] != '-']
+    df = df[df['salary'] != '?']
+    df.salary = convert_dollars_to_float(df.salary)
+    df.all_fund = convert_dollars_to_float(df.all_fund)
+    df.extra_fund = convert_dollars_to_float(df.extra_fund)
     return df
 
 #--------------------------------------------------------------------------------------------------
