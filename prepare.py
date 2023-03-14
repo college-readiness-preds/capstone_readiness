@@ -66,7 +66,7 @@ def remove_symbols(df):
 
 #--------------------------------------------------------------------------------------------------
 
-def clean_df(df):
+def clean_df():
     
     '''
     Cleans dataframe by replacing special characters with empty space
