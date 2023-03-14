@@ -99,6 +99,18 @@ def clean_df():
         except:
             continue
             
+    df=combine_features(df)
     return df
 
 #--------------------------------------------------------------------------------------------------
+
+def combine_features(df):
+    '''
+    this function will combine features to targets and drop originals
+    '''
+    df['teacher_exp_0to5']=df['beginning_teach']+df['teacher_exp_5']
+    df['teacher_exp_11_plus']= df['teacher_exp_11to20']+df['teacher_exp_21tp30']+df['teacher_exp_over30']
+    df['high_edu']=df['masters']+df['doct']
+    df=df.drop(columns=['masters', 'doct', 'beginning_teach', 'teacher_exp_5', 'teacher_exp_11to20', 
+                    'teacher_exp_21tp30', 'teacher_exp_over30'])
+    return df
