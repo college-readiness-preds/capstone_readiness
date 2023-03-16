@@ -46,25 +46,18 @@ Our initial hypothesis consists of predictions of significant drivers before exp
        * Is the average time to conflict for countries that have an internationalized intrastate conflict significantly less than the average time to conflict for all conflicts in the dataset?
        
 * Prep the data for modeling:
-    * encode columns to reduce the number of catagories:
-        * `location` intiger 0-10 for top ten locations and other
-        * `side_a` intiger 0-10 for top ten side_a's and other
-        * `side_b` intiger 0-20 for top twenty side_b's and other
-        * `start_date` intiger 0 or 1, 0 if before 2000 and 1 if after 2000
-        * `time_to_conflict` 1= less than or equal to 30 days, 2= between 30 days and 1 year, 3= longer than a year
-    * Dummies were encoded for:
-        * `location`, `side_a`, `side_b`, `start_date`, `type_of_conflict`, `region`, `time_to_conflict`, and `incompatibility`
-    * Dropped columns:
-        * `territory_name` and `start_date2`
+    * Split data into X and y train
+    * Scale all numeric data excluding target variables:
+        * MinMaxScalar() was used to scale data
       
-* Develop a model to predict the `time_to_conflict`
-   * Use drivers identified in explore to build predictive models
-       * Decision Tree
-       * KNN
-       * Random Forest
+* Develop a model to predict STAAR scores for `english_1`, `english_2`, `algebra`, `biology`, and `history`
+   * Regression models were used to predict STAAR scores
        * Linear Regression
+       * Lasso Lars
+       * Tweedie Regressor
+       * Polynomial Regression
    * Evaluate models on train and validate data
-   * Select the best model based on highest accuracy and difference between in sample and out of sample data
+   * Select the best model based on the lowest RMSE and difference between in sample and out of sample data RMSE
    * Test the best model on test data
  
 * Draw conclusions
@@ -78,17 +71,17 @@ Our initial hypothesis consists of predictions of significant drivers before exp
 | Feature | Definition |
 |:--------|:-----------|
 |school_id| The id number of the school from TEA|
-|eng1| English I, percent of students at approaches grade level or above for English I|
-|eng2| English II, percent of students at approaches grade level or above for English II|
+|english_1| English I, percent of students at approaches grade level or above for English I|
+|english_2| English II, percent of students at approaches grade level or above for English II|
 |algebra| Algebra, percent of students at approaches grade level or above for Algebra|
 |biology| Biology, percent of students at approaches grade level or above for Biology|
 |history| U.S. History, percent of students at approaches grade level or above for U.S. History|
-|ebel| EB/EL Current and Monitored, percent of students in the dual-language program that enables emergent bilingual (EB) students/English learners (ELs) to become proficient in listening, speaking, reading, and writing in the English language through the development of literacy and academic skills in the primary language and English.|
-|ex_5| Integer, number of teachers with 0-5 years of experience|
-|ex_10| Integer, number of teachers with 6-10 numbers of experience|
-|ex_plus| Integer, number of teachers with 11 or more years of experience|
-|extra| The amount of funds (in dollars) spent on extracurriculuars per student|
-|all_fund| The total amount of funds (in dollars) spent per student|
+|bilingual_or_english_learner| EB/EL Current and Monitored, percent of students in the dual-language program that enables emergent bilingual (EB) students/English learners (ELs) to become proficient in listening, speaking, reading, and writing in the English language through the development of literacy and academic skills in the primary language and English.|
+|teacher_exp_0to5| Integer, number of teachers with 0-5 years of experience|
+|teacher_exp_6to10| Integer, number of teachers with 6-10 numbers of experience|
+|teacher_exp_11_plus| Integer, number of teachers with 11 or more years of experience|
+|extracurricular_expend| The amount of funds (in dollars) spent on extracurriculuars per student|
+|total_expend| The average total amount of funds (in dollars) spent per student|
 |econdis| students that are from homes that are below the poverty line
 |salary| Average Actual Salary, Average amount teachers are being paid in dollars|
 |high_edu| Percent of teachers with a masters or doctorate degree|
