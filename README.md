@@ -29,12 +29,12 @@ Our initial hypothesis consists of predictions of significant drivers before exp
     * All the percent signs, dollar signs, and commas were removed from values
     * Columns were combined into desired features
         * `high_edu` was generated from combining percent of teachers that have a masters or doctorate
-        * Features for `ex_5`, `ex_10`, and `ex_plus` were generated from combining:
-            * Beginning teachers and teachers with 1-5 years of experience into `ex_5`
-            * Teachers with 11+ years of experience were combined into `ex_plus`
-            * `ex_10` stayed the same. Teachers of 6-10 years of experience
+        * Features for `teacher_exp_0to5`, `teacher_exp_6to10`, and `ex_plus` were generated from combining:
+            * Beginning teachers and teachers with 1-5 years of experience into `teacher_exp_0to5`
+            * Teachers with 11+ years of experience were combined into `teacher_exp_11_plus`
+            * `teacher_exp_6to10` stayed the same. Teachers of 6-10 years of experience
     * There were an initial 1571 rows
-        * The total number of rows after preperation and cleaning is XXXX
+        * The total number of rows after preperation and cleaning is 1391
 
 * Separate into train, validate, and test datasets
  
