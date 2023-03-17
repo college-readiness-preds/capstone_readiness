@@ -2,6 +2,9 @@
 from sklearn.model_selection import train_test_split
 import pandas as pd
 import numpy as np
+import scipy.stats as stats
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 
 def tts(df, stratify=None):
@@ -54,3 +57,42 @@ def teacher_ex(df):
     }
                       )
     return data
+
+##############################################################################
+
+def q2_plot(df):
+    '''
+    this function will plot the results for explore question 2
+    '''
+    ma=teacher_ex(df)
+
+    plt.figure(figsize=(10,5))
+    X = ['English 1', 'English 2', 'Algebra', 'Biology', 'U.S. History']
+
+    X_axis = np.arange(len(X))
+
+    plt.bar(X_axis[0] - 0.1, ma['Above Average'][0], 0.2, label = 'Above Average', color=['blue'], ec='black')
+    plt.bar(X_axis[0] + 0.1, ma['Below Average'][0], 0.2, label = 'Below Average', color=['orange'], ec='black')
+
+    plt.bar(X_axis[1] - 0.1, ma['Above Average'][1], 0.2, color=['blue'], ec='black')
+    plt.bar(X_axis[1] + 0.1, ma['Below Average'][1], 0.2, color=['orange'], ec='black')
+
+    plt.bar(X_axis[2] - 0.1, ma['Above Average'][2], 0.2, color=['blue'], ec='black')
+    plt.bar(X_axis[2] + 0.1, ma['Below Average'][2], 0.2, color=['orange'], ec='black')
+
+    plt.bar(X_axis[3] - 0.1, ma['Above Average'][3], 0.2, color=['blue'], ec='black')
+    plt.bar(X_axis[3] + 0.1, ma['Below Average'][3], 0.2, color=['orange'], ec='black')
+
+    plt.bar(X_axis[4] - 0.1, ma['Above Average'][4], 0.2, color=['blue'], ec='black')
+    plt.bar(X_axis[4] + 0.1, ma['Below Average'][4], 0.2, color=['orange'], ec='black')
+
+
+    plt.xticks(X_axis, X)
+    plt.xlabel("Subject")
+    plt.ylabel("Percent Passing")
+    plt.title("Percent of Students Passing STAAR Subjects Based on Teacher Experience")
+    plt.ylim(60, 95)
+    plt.grid(True, alpha=0.3, linestyle='--')
+    leg = plt.legend(title="Teachers With 11+ Years of Experience")
+    leg._legend_box.align = "left"
+    plt.show()
