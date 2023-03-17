@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import scipy.stats as stats
 from scipy.stats import ttest_ind
+import seaborn as sns
 
 
 
@@ -300,6 +301,6 @@ def correlation_stu_teach_ratio_subject(train):
         # more readable subject names
     df['Subject'] = ['English 1', 'English 2', 'Algebra', 'Biology', 'History']
         #plot results
-    sns.relplot(data= df, x= df['Correlation'], y= df['p-value'])
+    sns.relplot(data= df, x= df['Correlation'], y= df['p-value'], hue= 'Subject',s=200)
     
     return df
