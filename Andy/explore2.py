@@ -126,14 +126,6 @@ def q2_plot(df):
     plt.bar(X_axis[4] - 0.1, ma['Above Average'][4], 0.2, color=['blue'], ec='black')
     plt.bar(X_axis[4] + 0.1, ma['Below Average'][4], 0.2, color=['orange'], ec='black')
 
-    
-    ax = plt.gca()
-    
-    # Amount above bars
-    for p in ax.patches:
-        height = p.get_height()
-        ax.annotate('{:.0f}'.format(height), (p.get_x()+p.get_width()/2., height),
-                    ha='center', va='bottom', fontsize=9)
 
     plt.xticks(X_axis, X)
     plt.xlabel("Subject")
@@ -264,7 +256,7 @@ def viz_abv_avg_staar(train):
     for p in ax.patches:
         height = p.get_height()
         ax.annotate('{:.0f}'.format(height), (p.get_x()+p.get_width()/2., height),
-                    ha='center', va='bottom', fontsize=11)
+                    ha='center', va='bottom', fontsize=10)
 
     plt.xticks(X_axis, X)
     plt.xlabel("Subject")
@@ -406,7 +398,7 @@ def viz_econdis_total_expend(train):
     for p in ax.patches:
         height = p.get_height()
         ax.annotate('{:.0f}'.format(height), (p.get_x()+p.get_width()/2., height),
-                    ha='center', va='bottom', fontsize=9)
+                    ha='center', va='bottom', fontsize=10)
 
     plt.xticks(X_axis, X)
     plt.xlabel("Subject")
