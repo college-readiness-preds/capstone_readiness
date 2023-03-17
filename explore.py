@@ -3,7 +3,9 @@ import numpy as np
 import scipy.stats as stats
 from scipy.stats import ttest_ind
 import seaborn as sns
-
+from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 
 #--------------------------------------------------------------------------------------------------
@@ -18,17 +20,16 @@ def extra_subs(train):
 
     subjects = ['english_1', 'english_2', 'algebra', 'biology', 'history']
 
-    data = []
+    data1 = []
     for i in subjects:
 
         r, p = stats.pearsonr(x=train.extracurricular_expend, y=train[i])
-        data.append({
-                     'subject': i, 
-                     'correlation': r, 
+        data1.append({ 
+                     'Correlation': r, 
                      'p-value': p
                      })
         
-    df = pd.DataFrame(data)
+    df = pd.DataFrame(index=['English 1', 'English 2', 'Algebra', 'Biology', 'History'] ,data=data1)
     
     return df
 
@@ -44,6 +45,7 @@ def spend_v_eco(school):
     t, p = ttest_ind(high_ecodis, low_ecodis, equal_var=False)
     return t, p
 
+################################################################################
 
 def tts(df, stratify=None):
     '''
@@ -329,23 +331,18 @@ def correlation_stu_teach_ratio_subject(train):
     '''
     subjects = ['english_1', 'english_2', 'algebra', 'biology', 'history']
 
-    data = []
+    data1 = []
     
     for i in subjects:
 
         r, p = stats.pearsonr(x=train.student_teacher_ratio, y=train[i])
-        data.append({
-                     'Subject': i, 
+        data1.append({
                      'Correlation': r, 
                      'p-value': p
                      })
         
-    df = pd.DataFrame(data)
-        #set index to subject
-    df = df.set_index('Subject')
-        # more readable subject names
-    df['Subject'] = ['English 1', 'English 2', 'Algebra', 'Biology', 'History']
+    df = pd.DataFrame(index=['English 1', 'English 2', 'Algebra', 'Biology', 'History'] ,data=data1)
         #plot results
-    sns.relplot(data= df, x= df['Correlation'], y= df['p-value'], hue= 'Subject',s=200)
-    
+    sns.relplot(data= df, x= df['Correlation'], y= df['p-value'], hue= df.index,s=200)
+    plt.grid(True, alpha=0.3, linestyle='--')
     return df
