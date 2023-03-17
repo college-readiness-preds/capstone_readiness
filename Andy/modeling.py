@@ -51,6 +51,16 @@ def model_results(df):
         'Validate Model RMSE': rmse_val,
     })
     results['Model Difference']=results['Train Model RMSE']- results['Validate Model RMSE']
+
+    diff = results['Validate Baseline RMSE'] - results['Validate Model RMSE']
+    reduction = diff / results['Validate Baseline RMSE']
+    pct_improvement = round(reduction*100 ,2)
+    pct_improvement
+
+    results['Validate Improvement'] = pct_improvement
+    results['Validate Improvement'] = results['Validate Improvement'].astype(str) + '%'
+
+
     return results
 
 ################################################################################################
