@@ -215,7 +215,7 @@ def viz_abv_avg_staar():
     plt.xticks(X_axis, X)
     plt.xlabel("Subject")
     plt.ylabel("Percent Passing")
-    plt.title("Above Average/ Below Average Economically Disadvantaged")
+    plt.title("STAAR Passing Rate for Economically Disadvantaged")
     plt.ylim(20, 95)
     plt.grid(True, alpha=0.3, linestyle='--')
     leg = plt.legend(title="Economically Disadvantaged")
