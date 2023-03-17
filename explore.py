@@ -192,7 +192,6 @@ def above_avg_econdis_total_expend(train):
 #--------------------------------------------------------------------------------------------------
 
 #Question 6
-
 def correlation_stu_teach_ratio_subject(train):
 
     '''    
@@ -200,21 +199,25 @@ def correlation_stu_teach_ratio_subject(train):
     between each subject's passing rate and student teacher ratio
     and plots results.
     '''
-
     subjects = ['english_1', 'english_2', 'algebra', 'biology', 'history']
 
     data = []
+    
     for i in subjects:
 
         r, p = stats.pearsonr(x=train.student_teacher_ratio, y=train[i])
         data.append({
-                     'subject': i, 
-                     'correlation': r, 
+                     'Subject': i, 
+                     'Correlation': r, 
                      'p-value': p
                      })
         
     df = pd.DataFrame(data)
-
-    sns.relplot(data= df, x= df['correlation'], y= df['p-value'])
+        #set index to subject
+    df = df.set_index('Subject')
+        # more readable subject names
+    df['Subject'] = ['English 1', 'English 2', 'Algebra', 'Biology', 'History']
+        #plot results
+    sns.relplot(data= df, x= df['Correlation'], y= df['p-value'])
     
     return df
