@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
-
+from scipy import stats
+import seaborn as sns
 
 
 #--------------------------------------------------------------------------------------------------
@@ -97,3 +98,30 @@ def above_avg_econdis_total_expend(train):
 
 #--------------------------------------------------------------------------------------------------
 
+#Question 6
+
+def correlation_stu_teach_ratio_subject(train):
+
+    '''    
+    This function executes pearson r test checking for correlation 
+    between each subject's passing rate and student teacher ratio
+    and plots results.
+    '''
+
+    subjects = ['english_1', 'english_2', 'algebra', 'biology', 'history']
+
+    data = []
+    for i in subjects:
+
+        r, p = stats.pearsonr(x=train.student_teacher_ratio, y=train[i])
+        data.append({
+                     'subject': i, 
+                     'correlation': r, 
+                     'p-value': p
+                     })
+        
+    df = pd.DataFrame(data)
+
+    sns.relplot(data= df, x= df['correlation'], y= df['p-value'])
+    
+    return df
