@@ -301,6 +301,6 @@ def correlation_stu_teach_ratio_subject(train):
         # more readable subject names
     df['Subject'] = ['English 1', 'English 2', 'Algebra', 'Biology', 'History']
         #plot results
-    sns.relplot(data= df, x= df['Correlation'], y= df['p-value'], hue= 'Subject',s=300)
+    sns.relplot(data= df, x= df['Correlation'], y= df['p-value'], hue= 'Subject',s=200)
     
     return df
