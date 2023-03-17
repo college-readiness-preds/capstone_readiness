@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import scipy.stats as stats
 
 #--------------------------------------------------------------------------------------------------
 
@@ -53,3 +54,36 @@ def above_avg_econdis_total_expend(train, subject='subject'):
 
 #--------------------------------------------------------------------------------------------------
 
+
+def extra_subs(train):
+
+    '''    
+    This function takes in train df and executes pearson r test testing for correlation 
+    between each subject's passing rate and extracurricular spending per student.
+    '''
+
+    subjects = ['english_1', 'english_2', 'algebra', 'biology', 'history']
+
+    data = []
+    for i in subjects:
+
+        r, p = stats.pearsonr(x=train.extracurricular_expend, y=train[i])
+        data.append({
+                     'subject': i, 
+                     'correlation': r, 
+                     'p-value': p
+                     })
+        
+    df = pd.DataFrame(data)
+    
+    return df
+
+def spend_v_eco(school):
+    '''
+    this function takes in a dataframe and performs a independent t test between schools of high ecodis and low ecodis
+    and returns t and p value
+    '''
+    low_ecodis = school[school['econdis'] < school.econdis.mean()].econdis
+    high_ecodis = school[school['econdis'] > school.econdis.mean()].econdis
+    t, p = ttest_ind(high_ecodis, low_ecodis, equal_var=False)
+    return t, p
