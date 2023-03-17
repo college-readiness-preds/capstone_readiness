@@ -225,7 +225,7 @@ def abv_avg_staar_df(train):
 
 # Question 1 Visual
 
-def viz_abv_avg_staar():
+def viz_abv_avg_staar(train):
     
     ma=abv_avg_staar_df(train)
 
@@ -365,7 +365,7 @@ def above_avg_econdis_total_expend(train):
 
 # QUESTION 3 VISUAL
 
-def viz_econdis_total_expend():
+def viz_econdis_total_expend(train):
     
     ma = above_avg_econdis_total_expend(train)
 
