@@ -1,11 +1,51 @@
-
-from sklearn.model_selection import train_test_split
 import pandas as pd
 import numpy as np
-import seaborn as sns
 import scipy.stats as stats
+from scipy.stats import ttest_ind
+import seaborn as sns
+from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
+import seaborn as sns
 
+
+#--------------------------------------------------------------------------------------------------
+
+
+def extra_subs(train):
+
+    '''    
+    This function takes in train df and executes pearson r test testing for correlation 
+    between each subject's passing rate and extracurricular spending per student.
+    '''
+
+    subjects = ['english_1', 'english_2', 'algebra', 'biology', 'history']
+
+    data1 = []
+    for i in subjects:
+
+        r, p = stats.pearsonr(x=train.extracurricular_expend, y=train[i])
+        data1.append({ 
+                     'Correlation': r, 
+                     'p-value': p
+                     })
+        
+    df = pd.DataFrame(index=['English 1', 'English 2', 'Algebra', 'Biology', 'History'] ,data=data1)
+    
+    return df
+
+#--------------------------------------------------------------------------------------------------
+
+def spend_v_eco(school):
+    '''
+    this function takes in a dataframe and performs a independent t test between schools of high ecodis and low ecodis
+    and returns t and p value
+    '''
+    low_ecodis = school[school['econdis'] < school.econdis.mean()].econdis
+    high_ecodis = school[school['econdis'] > school.econdis.mean()].econdis
+    t, p = ttest_ind(high_ecodis, low_ecodis, equal_var=False)
+    return t, p
+
+################################################################################
 
 def tts(df, stratify=None):
     '''
@@ -97,7 +137,7 @@ def q2_plot(df):
     leg._legend_box.align = "left"
     plt.show()
 
-    #--------------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------
 
 # QUESTION 1
 
@@ -139,6 +179,51 @@ def abv_avg_staar_df(train):
     }
                       )
     return data
+
+#--------------------------------------------------------------------------------------------------
+
+# Question 1 Visual
+
+def viz_abv_avg_staar():
+    
+    ma=abv_avg_staar_df(train)
+
+    plt.figure(figsize=(10,5))
+    X = ['English 1', 'English 2', 'Algebra', 'Biology', 'U.S. History']
+
+    X_axis = np.arange(len(X))
+
+    plt.bar(X_axis[0] - 0.1, ma['Above Average'][0], 0.2, label = 'Above Average', color=['blue'], ec='black')
+    plt.bar(X_axis[0] + 0.1, ma['Below Average'][0], 0.2, label = 'Below Average', color=['orange'], ec='black')
+
+    plt.bar(X_axis[1] - 0.1, ma['Above Average'][1], 0.2, color=['blue'], ec='black')
+    plt.bar(X_axis[1] + 0.1, ma['Below Average'][1], 0.2, color=['orange'], ec='black')
+
+    plt.bar(X_axis[2] - 0.1, ma['Above Average'][2], 0.2, color=['blue'], ec='black')
+    plt.bar(X_axis[2] + 0.1, ma['Below Average'][2], 0.2, color=['orange'], ec='black')
+
+    plt.bar(X_axis[3] - 0.1, ma['Above Average'][3], 0.2, color=['blue'], ec='black')
+    plt.bar(X_axis[3] + 0.1, ma['Below Average'][3], 0.2, color=['orange'], ec='black')
+
+    plt.bar(X_axis[4] - 0.1, ma['Above Average'][4], 0.2, color=['blue'], ec='black')
+    plt.bar(X_axis[4] + 0.1, ma['Below Average'][4], 0.2, color=['orange'], ec='black')
+
+    
+    # Amount above bars
+    for p in ax.patches:
+        height = p.get_height()
+        ax.annotate('{:.0f}'.format(height), (p.get_x()+p.get_width()/2., height),
+                    ha='center', va='bottom', fontsize=12)
+
+    plt.xticks(X_axis, X)
+    plt.xlabel("Subject")
+    plt.ylabel("Percent Passing")
+    plt.title("STAAR Passing Rate for Economically Disadvantaged")
+    plt.ylim(20, 95)
+    plt.grid(True, alpha=0.3, linestyle='--')
+    leg = plt.legend(title="Economically Disadvantaged")
+    leg._legend_box.align = "left"
+    plt.show()
 
 #--------------------------------------------------------------------------------------------------
 
@@ -191,6 +276,51 @@ def above_avg_econdis_total_expend(train):
 
 #--------------------------------------------------------------------------------------------------
 
+# QUESTION 3 VISUAL
+
+def viz_econdis_total_expend():
+    
+    ma = above_avg_econdis_total_expend(train)
+
+    plt.figure(figsize=(10,5))
+    X = ['English 1', 'English 2', 'Algebra', 'Biology', 'U.S. History']
+
+    X_axis = np.arange(len(X))
+
+    plt.bar(X_axis[0] - 0.1, ma['Above Average'][0], 0.2, label = 'Above Average', color=['blue'], ec='black')
+    plt.bar(X_axis[0] + 0.1, ma['Below Average'][0], 0.2, label = 'Below Average', color=['orange'], ec='black')
+
+    plt.bar(X_axis[1] - 0.1, ma['Above Average'][1], 0.2, color=['blue'], ec='black')
+    plt.bar(X_axis[1] + 0.1, ma['Below Average'][1], 0.2, color=['orange'], ec='black')
+
+    plt.bar(X_axis[2] - 0.1, ma['Above Average'][2], 0.2, color=['blue'], ec='black')
+    plt.bar(X_axis[2] + 0.1, ma['Below Average'][2], 0.2, color=['orange'], ec='black')
+
+    plt.bar(X_axis[3] - 0.1, ma['Above Average'][3], 0.2, color=['blue'], ec='black')
+    plt.bar(X_axis[3] + 0.1, ma['Below Average'][3], 0.2, color=['orange'], ec='black')
+
+    plt.bar(X_axis[4] - 0.1, ma['Above Average'][4], 0.2, color=['blue'], ec='black')
+    plt.bar(X_axis[4] + 0.1, ma['Below Average'][4], 0.2, color=['orange'], ec='black')
+
+    
+    # Amount above bars
+    for p in ax.patches:
+        height = p.get_height()
+        ax.annotate('{:.0f}'.format(height), (p.get_x()+p.get_width()/2., height),
+                    ha='center', va='bottom', fontsize=12)
+
+    plt.xticks(X_axis, X)
+    plt.xlabel("Subject")
+    plt.ylabel("Amount($)")
+    plt.title("Total Expenditure for Economically Disadvantaged Schools")
+    plt.ylim(2000, 14000)
+    plt.grid(True, alpha=0.3, linestyle='--')
+    leg = plt.legend(title="STAAR Passing Rate")
+    leg._legend_box.align = "left"
+    plt.show()
+
+#--------------------------------------------------------------------------------------------------
+
 #Question 6
 def correlation_stu_teach_ratio_subject(train):
 
@@ -211,8 +341,8 @@ def correlation_stu_teach_ratio_subject(train):
                      'p-value': p
                      })
         
-    df = pd.DataFrame(index=['English 1', 'English 2', 'Algebra', 'Biology', 'History'] , data=data1)
+    df = pd.DataFrame(index=['English 1', 'English 2', 'Algebra', 'Biology', 'History'] ,data=data1)
         #plot results
-    sns.relplot(data= df, x= df['Correlation'], y= df['p-value'])
-    
+    sns.relplot(data= df, x= df['Correlation'], y= df['p-value'], hue= df.index,s=200)
+    plt.grid(True, alpha=0.3, linestyle='--')
     return df
