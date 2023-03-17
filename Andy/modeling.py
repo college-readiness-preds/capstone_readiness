@@ -52,3 +52,51 @@ def model_results(df):
     })
     results['Model Difference']=results['Train Model RMSE']- results['Validate Model RMSE']
     return results
+
+################################################################################################
+
+
+def modeling_visual(df):
+    '''
+    this function shows the visual for modeling results
+    '''
+    ma=model_results(df)
+
+    plt.figure(figsize=(10,5))
+    X = ['English 1', 'English 2', 'Algebra', 'Biology', 'U.S. History']
+
+    X_axis = np.arange(len(X))
+
+    plt.bar(X_axis[0] - 0.3, ma['Train Baseline RMSE'][0], 0.2, 
+            label = 'Baseline RMSE', color=['blue'], ec='black')
+    plt.bar(X_axis[0] - 0.1, ma['Train Model RMSE'][0], 0.2, 
+            label = 'Train RMSE', color=['orange'], ec='black')
+    plt.bar(X_axis[0] + 0.1, ma['Validate Model RMSE'][0], 0.2, 
+            label = 'Validate RMSE', color=['rebeccapurple'], ec='black')
+
+    plt.bar(X_axis[1] - 0.3, ma['Train Baseline RMSE'][1], 0.2, color=['blue'], ec='black')
+    plt.bar(X_axis[1] - 0.1, ma['Train Model RMSE'][1], 0.2, color=['orange'], ec='black')
+    plt.bar(X_axis[1] + 0.1, ma['Validate Model RMSE'][0], 0.2, color=['rebeccapurple'], ec='black')
+    
+    plt.bar(X_axis[2] - 0.3, ma['Train Baseline RMSE'][2], 0.2, color=['blue'], ec='black')
+    plt.bar(X_axis[2] - 0.1, ma['Train Model RMSE'][2], 0.2, color=['orange'], ec='black')
+    plt.bar(X_axis[2] + 0.1, ma['Validate Model RMSE'][0], 0.2, color=['rebeccapurple'], ec='black')
+
+    plt.bar(X_axis[3] - 0.3, ma['Train Baseline RMSE'][3], 0.2, color=['blue'], ec='black')
+    plt.bar(X_axis[3] - 0.1, ma['Train Model RMSE'][3], 0.2, color=['orange'], ec='black')
+    plt.bar(X_axis[3] + 0.1, ma['Validate Model RMSE'][0], 0.2, color=['rebeccapurple'], ec='black')
+
+    plt.bar(X_axis[4] - 0.3, ma['Train Baseline RMSE'][4], 0.2, color=['blue'], ec='black')
+    plt.bar(X_axis[4] - 0.1, ma['Train Model RMSE'][4], 0.2, color=['orange'], ec='black')
+    plt.bar(X_axis[4] + 0.1, ma['Validate Model RMSE'][4], 0.2, color=['rebeccapurple'], ec='black')
+
+
+    plt.xticks(X_axis, X)
+    plt.xlabel("Subject")
+    plt.ylabel("RMSE")
+    plt.title("Modeling Results")
+    plt.ylim(0, 25)
+    plt.grid(True, alpha=0.3, linestyle='--')
+    leg = plt.legend(title="RMSE")
+    leg._legend_box.align = "left"
+    plt.show()

@@ -2,9 +2,9 @@
 from sklearn.model_selection import train_test_split
 import pandas as pd
 import numpy as np
+import seaborn as sns
 import scipy.stats as stats
 import matplotlib.pyplot as plt
-import seaborn as sns
 
 
 def tts(df, stratify=None):
@@ -191,3 +191,28 @@ def above_avg_econdis_total_expend(train):
 
 #--------------------------------------------------------------------------------------------------
 
+#Question 6
+def correlation_stu_teach_ratio_subject(train):
+
+    '''    
+    This function executes pearson r test checking for correlation 
+    between each subject's passing rate and student teacher ratio
+    and plots results.
+    '''
+    subjects = ['english_1', 'english_2', 'algebra', 'biology', 'history']
+
+    data1 = []
+    
+    for i in subjects:
+
+        r, p = stats.pearsonr(x=train.student_teacher_ratio, y=train[i])
+        data1.append({
+                     'Correlation': r, 
+                     'p-value': p
+                     })
+        
+    df = pd.DataFrame(index=['English 1', 'English 2', 'Algebra', 'Biology', 'History'] , data=data1)
+        #plot results
+    sns.relplot(data= df, x= df['Correlation'], y= df['p-value'])
+    
+    return df
