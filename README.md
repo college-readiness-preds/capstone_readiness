@@ -24,11 +24,11 @@ Our initial hypothesis consists of predictions of significant drivers before exp
 
 ## Project Plan:
 
-* Acquire the data from "https://rptsvr1.tea.texas.gov/perfreport/tprs/tprs_srch.html"
+* **Acquire the data:** "https://rptsvr1.tea.texas.gov/perfreport/tprs/tprs_srch.html"
   * Web scraping was used to acquire the data
   * The data is from Texas Education Agency (TEA).
 
-* Data prep for exploration:
+* **Data prep for exploration:**
     * Schools that had special characters were removed from analysis
         * special characters (`*`, `-`, `?`, n/a)
     * Nulls were removed:
@@ -43,31 +43,33 @@ Our initial hypothesis consists of predictions of significant drivers before exp
     * There were an initial 1571 rows
         * The total number of rows after preperation and cleaning is 1391
 
-* Separate into train, validate, and test datasets
+* **Separate into train, validate, and test datasets**
  
-* Explore the train data in search of drivers of time_to_conflict
-   * Answer the following initial questions
-       * Is the average time to conflict for countries in Asia significantlly higher compared to all other regions?
-       * Is the average time to conflict for countries in Africa and the Middle East significantlly lower than the average time to conflict for all regions?
-       * Is the average time to conflict for countries that have an intrastate conflict over government significantlly greater than the average time to conflict for countries that have an interstate conflict over territory?
-       * Is the average time to conflict for countries that have an internationalized intrastate conflict significantly less than the average time to conflict for all conflicts in the dataset?
+* **Explore data to develop an understanding of what features affect a school's STAAR passing rate.**
+   * Initial questions:
+       * Do schools with more economically disadvantaged students have a lower average percent passing rate for STAAR exams?
+       * Do schools with teachers that have more years of experience have a better average STAAR score passing rates?
+       * Of schools with above average economically disadvantaged students, do the schools with higher average STAAR scores get more funding per student?
+       * Do schools with above average economically disadvantaged students have significantly higher total expendature per student?
+       * Is there a statisticaly significant correlation between the amount of extracurricular expendatures and algebra passing rates?
+       * Is there a statisticaly significant correlation between student teacher ratio and all subjects passing rates?
        
-* Prep the data for modeling:
+* **Prep the data for modeling:**
     * Split data into X and y train
     * Scale all numeric data excluding target variables:
         * MinMaxScalar() was used to scale data
       
-* Develop a model to predict STAAR scores for `english_1`, `english_2`, `algebra`, `biology`, and `history`
+* **Develop a model to predict STAAR scores for `english_1`, `english_2`, `algebra`, `biology`, and `history`**
    * Regression models were used to predict STAAR scores
        * Linear Regression
        * Lasso Lars
        * Tweedie Regressor
        * Polynomial Regression
-   * Evaluate models on train and validate data
+   * Evaluate models on train and validate data**
    * Select the best model based on the lowest RMSE and difference between in sample and out of sample data RMSE
    * Test the best model on test data
  
-* Draw conclusions
+* **Draw conclusions**
 
 ## Data Dictionary:
 
@@ -75,7 +77,7 @@ Our initial hypothesis consists of predictions of significant drivers before exp
     * https://tea.texas.gov/sites/default/files/comprehensive-tprs-glossary-2021.pdf
 
 
-| Feature | Definition |
+| **Feature** | **Definition** |
 |:--------|:-----------|
 |school_id| The id number of the school from TEA|
 |english_1| English I, percent of students at approaches grade level or above for English I|
