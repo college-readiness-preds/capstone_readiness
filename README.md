@@ -12,9 +12,11 @@ Our youth matters. In Texas, the State of Texas Assessment of Academic Readiness
 
 ## Project Goals:
 * Identify drivers of STAAR scores
-* Build a model to predict STAAR scores
-* Deliver results in a final notebook
-* Deliver presentation to stakeholders
+* Develop a deeper understanding of how a school's features influence STAAR passing rates.
+* Build a model to accurately predict STAAR passing rates.
+* Provide insights of which features influence STAAR passing rates.
+* Empower schools with the knowledge and tools to improve.
+
 
 ## Executive Summary:
 Through the course of this project, I was able to accurately predict the `time_to_conflict`. There were drivers identified such as the Asia `region` having a significantlly longer `time_to_conflict` and internationalized intrastate conflicts having a significantly shorter `time_to_conflict`. That can be interpreted as the more parties involved the quicker the conflict can escalate. To any potential stakeholders I would recommend using this model as a supplement to predict conflict as situations develop and should not be solely relied upon.
@@ -100,7 +102,8 @@ Our initial hypothesis consists of predictions of significant drivers before exp
 
 ## Steps to Reproduce
 1. Clone this repo
-2. Use the function from acquire.py to scrape the data from the TEA website !THIS TAKES A LONG TIME!
+2. Use the function from acquire.py to scrape the data from the TEA website 
+    * May take a few hours to web scrape.
 3. Use the functions from prepare.py to prepare the data for exploration
 4. Run the explore and modeling notebook
 5. Run final report notebook
