@@ -133,7 +133,7 @@ def q2_plot(df):
     for p in ax.patches:
         height = p.get_height()
         ax.annotate('{:.0f}'.format(height), (p.get_x()+p.get_width()/2., height),
-                    ha='center', va='bottom', fontsize=9)
+                    ha='center', va='bottom', fontsize=11)
 
     plt.xticks(X_axis, X)
     plt.xlabel("Subject")
