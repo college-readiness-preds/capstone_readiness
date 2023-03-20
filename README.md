@@ -11,7 +11,7 @@
 Our youth matters. In Texas, the State of Texas Assessment of Academic Readiness (STAAR) exam is used to measure student learning at the end of the school year. Scores on these exams are used to calculate school accountability ratings which ensures that only high performing schools stay open. We want to use the publically available data to identify key features of schools that have the largest impact on the STAAR exams. After exploration, we use a machine learning algorithm to predict the most likely STAAR exam outcome based on the features we identified as having the largest impact. The scope of this project is limited to Texas High Schools, but may be applied to other types of schools as well.
 
 ## Project Goals:
-* Identify drivers of STAAR scores
+* Identify drivers of STAAR passing rates.
 * Develop a deeper understanding of how a school's features influence STAAR passing rates.
 * Build a model to accurately predict STAAR passing rates.
 * Provide insights of which features influence STAAR passing rates.
@@ -19,7 +19,12 @@ Our youth matters. In Texas, the State of Texas Assessment of Academic Readiness
 
 
 ## Executive Summary:
-Through the course of this project, I was able to accurately predict the `time_to_conflict`. There were drivers identified such as the Asia `region` having a significantlly longer `time_to_conflict` and internationalized intrastate conflicts having a significantly shorter `time_to_conflict`. That can be interpreted as the more parties involved the quicker the conflict can escalate. To any potential stakeholders I would recommend using this model as a supplement to predict conflict as situations develop and should not be solely relied upon.
+**Insights**
+1. STAAR passing rate compared between schools with above/below average economically disadvantaged students.
+2. Schools with a higher number of teachers with 11+ years of experience have a significantly higher passing rate.
+3. When comparing schools with above average economically disadvantaged student population, the schools with a higher STAAR passing rate have a lower total expenditure per student. 
+
+
 
 ## Initial Hypothesis:
 Our initial hypothesis consists of predictions of significant drivers before exploration. We predict schools that have more experienced teachers and teachers with higher education will yield higher STAAR scores. Considering teachers are paid more, in most cases, as teachers possess more years of experience, schools with a higher average salary we predict will also have higher STAAR scores. Similarly the more time a teacher can dedicate to a student, the higher the STAAR score. With this logic we predict that smaller student to teacher ratios are more favorable. For school funding, we think that the more funding a school has the higher the STAAR scores will be because of the amount of resources are able to be allocated to the students.
