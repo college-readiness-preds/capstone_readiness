@@ -29,7 +29,7 @@ def extra_subs(train):
                      'p-value': p
                      })
         
-    df = pd.DataFrame(index=['English 1', 'English 2', 'Algebra', 'Biology', 'History'] ,data=data1)
+    df = pd.DataFrame(index=['English 1', 'English 2', 'Algebra', 'Biology', 'U.S. History'] ,data=data1)
     
     return df
 
@@ -315,7 +315,7 @@ def above_avg_econdis_total_expend(train):
         
     
     # Subjects for plot
-    subjects = ['Algebra', 'English 1', 'English 2', 'Biology', 'History']
+    subjects = ['Algebra', 'English 1', 'English 2', 'Biology', 'U.S. History']
     
     df = pd.DataFrame(index=subjects, data={
         'Above Average': above,
@@ -362,7 +362,7 @@ def above_avg_econdis_total_expend(train):
         
     
     # Subjects for plot
-    subjects = ['Algebra', 'English 1', 'English 2', 'Biology', 'History']
+    subjects = ['Algebra', 'English 1', 'English 2', 'Biology', 'U.S. History']
     
     df = pd.DataFrame(index=subjects, data={
         'Above Average': above,
@@ -440,8 +440,9 @@ def correlation_stu_teach_ratio_subject(train):
                      'p-value': p
                      })
         
-    df = pd.DataFrame(index=['English 1', 'English 2', 'Algebra', 'Biology', 'History'] ,data=data1)
+    df = pd.DataFrame(index=['English 1', 'English 2', 'Algebra', 'Biology', 'U.S. History'] ,data=data1)
         #plot results
     sns.relplot(data= df, x= df['Correlation'], y= df['p-value'], hue= df.index,s=200)
+    plt.title('Correlation and Significance of Student Teacher Ratio')
     plt.grid(True, alpha=0.3, linestyle='--')
     return df
