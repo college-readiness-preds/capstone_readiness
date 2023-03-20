@@ -72,9 +72,9 @@ def model_results_table(df):
 ################################################################################################
 def model_results_plot(df):
     '''
-    this function will calculate baseline RMSE for train/validate and generate the linear regression models/preds/RMSE and show the difference
+    this function will calculate baseline RMSE for train/validate and generate the linear regression models/preds/RMSE and show     the difference
     '''
-    train, val, test= ex.tts(df)
+    train, val, test= e.split_data(df)
     target=['english_1', 'english_2', 'algebra','biology', 'history']
     subject=['English 1', 'English 2', 'Algebra', 'Biology', 'U.S. History']
     rmse_base_t=[]
@@ -99,14 +99,15 @@ def model_results_plot(df):
         pred_test= lm.predict(X_test)
         
         train['Baseline Mean'] = train[t].mean()
-        rmse_base_t.append(mean_squared_error(train[t], train['Baseline Mean'], squared=False))
+        rmse_base_t.append(round(mean_squared_error(train[t], train['Baseline Mean'], squared=False),2))
         val['Baseline Mean'] = val[t].mean()
         rmse_base_v.append(mean_squared_error(val[t], val['Baseline Mean'], squared=False))
         
         rmse_train.append(mean_squared_error(y_train[t], pred_t, squared=False))
         rmse_val.append(mean_squared_error(y_val[t], pred_v, squared=False))
-        rmse_test.append(mean_squared_error(y_test[t], pred_test, squared=False))
-        
+        rmse_test.append(round(mean_squared_error(y_test[t], pred_test, squared=False),2))
+    
+    
     results=pd.DataFrame(index=subject, data= {
         'Train Baseline RMSE': rmse_base_t,
         'Validate Baseline RMSE': rmse_base_v,
@@ -137,35 +138,42 @@ def modeling_visual(df):
 
     X_axis = np.arange(len(X))
 
-    plt.bar(X_axis[0] - 0.3, ma['Train Baseline RMSE'][0], 0.2, 
+    fig, ax = plt.subplots(layout='constrained')
+    
+    ax.bar(X_axis[0] - 0.3, ma['Train Baseline RMSE'][0], 0.2, 
             label = 'Baseline RMSE', color=['blue'], ec='black')
-    plt.bar(X_axis[0] - 0.1, ma['Train Model RMSE'][0], 0.2, 
+    ax.bar(X_axis[0] - 0.1, ma['Train Model RMSE'][0], 0.2, 
             label = 'Train RMSE', color=['orange'], ec='black')
-    plt.bar(X_axis[0] + 0.1, ma['Validate Model RMSE'][0], 0.2, 
+    ax.bar(X_axis[0] + 0.1, ma['Validate Model RMSE'][0], 0.2, 
             label = 'Validate RMSE', color=['rebeccapurple'], ec='black')
-    plt.bar(X_axis[0] + 0.3, ma['Test RMSE'][0], 0.2, 
+    ax.bar(X_axis[0] + 0.3, ma['Test RMSE'][0], 0.2, 
             label = 'Test RMSE', color=['green'], ec='black')
 
-    plt.bar(X_axis[1] - 0.3, ma['Train Baseline RMSE'][1], 0.2, color=['blue'], ec='black')
-    plt.bar(X_axis[1] - 0.1, ma['Train Model RMSE'][1], 0.2, color=['orange'], ec='black')
-    plt.bar(X_axis[1] + 0.1, ma['Validate Model RMSE'][1], 0.2, color=['rebeccapurple'], ec='black')
-    plt.bar(X_axis[1] + 0.3, ma['Test RMSE'][1], 0.2, color=['green'], ec='black')
+    ax.bar(X_axis[1] - 0.3, ma['Train Baseline RMSE'][1], 0.2, color=['blue'], ec='black')
+    ax.bar(X_axis[1] - 0.1, ma['Train Model RMSE'][1], 0.2, color=['orange'], ec='black')
+    ax.bar(X_axis[1] + 0.1, ma['Validate Model RMSE'][1], 0.2, color=['rebeccapurple'], ec='black')
+    ax.bar(X_axis[1] + 0.3, ma['Test RMSE'][1], 0.2, color=['green'], ec='black')
     
-    plt.bar(X_axis[2] - 0.3, ma['Train Baseline RMSE'][2], 0.2, color=['blue'], ec='black')
-    plt.bar(X_axis[2] - 0.1, ma['Train Model RMSE'][2], 0.2, color=['orange'], ec='black')
-    plt.bar(X_axis[2] + 0.1, ma['Validate Model RMSE'][2], 0.2, color=['rebeccapurple'], ec='black')
-    plt.bar(X_axis[2] + 0.3, ma['Test RMSE'][2], 0.2, color=['green'], ec='black')
+    ax.bar(X_axis[2] - 0.3, ma['Train Baseline RMSE'][2], 0.2, color=['blue'], ec='black')
+    ax.bar(X_axis[2] - 0.1, ma['Train Model RMSE'][2], 0.2, color=['orange'], ec='black')
+    ax.bar(X_axis[2] + 0.1, ma['Validate Model RMSE'][2], 0.2, color=['rebeccapurple'], ec='black')
+    ax.bar(X_axis[2] + 0.3, ma['Test RMSE'][2], 0.2, color=['green'], ec='black')
 
-    plt.bar(X_axis[3] - 0.3, ma['Train Baseline RMSE'][3], 0.2, color=['blue'], ec='black')
-    plt.bar(X_axis[3] - 0.1, ma['Train Model RMSE'][3], 0.2, color=['orange'], ec='black')
-    plt.bar(X_axis[3] + 0.1, ma['Validate Model RMSE'][3], 0.2, color=['rebeccapurple'], ec='black')
-    plt.bar(X_axis[3] + 0.3, ma['Test RMSE'][3], 0.2, color=['green'], ec='black')
+    ax.bar(X_axis[3] - 0.3, ma['Train Baseline RMSE'][3], 0.2, color=['blue'], ec='black')
+    ax.bar(X_axis[3] - 0.1, ma['Train Model RMSE'][3], 0.2, color=['orange'], ec='black')
+    ax.bar(X_axis[3] + 0.1, ma['Validate Model RMSE'][3], 0.2, color=['rebeccapurple'], ec='black')
+    ax.bar(X_axis[3] + 0.3, ma['Test RMSE'][3], 0.2, color=['green'], ec='black')
 
-    plt.bar(X_axis[4] - 0.3, ma['Train Baseline RMSE'][4], 0.2, color=['blue'], ec='black')
-    plt.bar(X_axis[4] - 0.1, ma['Train Model RMSE'][4], 0.2, color=['orange'], ec='black')
-    plt.bar(X_axis[4] + 0.1, ma['Validate Model RMSE'][4], 0.2, color=['rebeccapurple'], ec='black')
-    plt.bar(X_axis[4] + 0.3, ma['Test RMSE'][4], 0.2, color=['green'], ec='black')
+    ax.bar(X_axis[4] - 0.3, ma['Train Baseline RMSE'][4], 0.2, color=['blue'], ec='black')
+    ax.bar(X_axis[4] - 0.1, ma['Train Model RMSE'][4], 0.2, color=['orange'], ec='black')
+    ax.bar(X_axis[4] + 0.1, ma['Validate Model RMSE'][4], 0.2, color=['rebeccapurple'], ec='black')
+    ax.bar(X_axis[4] + 0.3, ma['Test RMSE'][4], 0.2, color=['green'], ec='black')
 
+    container = [0,3,4,7,8,11,12,15,16,19]
+    
+    for c in container:
+        ax.bar_label(ax.containers[c])
+    
 
     plt.xticks(X_axis, X)
     plt.xlabel("Subject")
