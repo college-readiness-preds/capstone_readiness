@@ -5,7 +5,7 @@
   style="display: inline-block; margin: 0 auto; max-width: 200px">
 
 
-# Capstone_readiness
+# The STAARs of Texas High Schools
 
 ## Project Description:
 Our youth matters. In Texas, the State of Texas Assessment of Academic Readiness (STAAR) exam is used to measure student learning at the end of the school year. Scores on these exams are used to calculate school accountability ratings which ensures that only high performing schools stay open. We want to use the publically available data to identify key features of schools that have the largest impact on the STAAR exams. After exploration, we use a machine learning algorithm to predict the most likely STAAR exam outcome based on the features we identified as having the largest impact. The scope of this project is limited to Texas High Schools, but may be applied to other types of schools as well.
