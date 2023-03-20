@@ -74,7 +74,7 @@ def model_results_plot(df):
     '''
     this function will calculate baseline RMSE for train/validate and generate the linear regression models/preds/RMSE and show     the difference
     '''
-    train, val, test= e.split_data(df)
+    train, val, test= ex.tts(df)
     target=['english_1', 'english_2', 'algebra','biology', 'history']
     subject=['English 1', 'English 2', 'Algebra', 'Biology', 'U.S. History']
     rmse_base_t=[]
