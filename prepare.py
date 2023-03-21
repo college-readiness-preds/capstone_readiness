@@ -145,7 +145,7 @@ def expense_per_stu(df):
     plt.hist(low.total_expend, bins=65, ec='black', color='orange')
     plt.xlim([0,35000])
     classes = ['High Economically Disadvantaged', 'Low Economically Disadvantaged']
-    plt.legend(labels=classes, title='Economically Disadvantaged')
+    plt.legend(labels=classes)
     plt.title('Total Expediture for High/Low Economically Disadvantaged Schools')
     plt.xlabel('Expense(per student)')
     plt.ylabel('Count')
