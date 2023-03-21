@@ -444,6 +444,7 @@ def correlation_stu_teach_ratio_subject(train):
         #plot results
     sns.relplot(data= df, x= df['Correlation'], y= df['p-value'], hue= df.index,s=200)
     plt.grid(True, alpha=0.3, linestyle='--')
+    plt.title('Correlation Significance and Strength')
     return df
 
 
