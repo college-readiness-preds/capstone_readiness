@@ -126,6 +126,8 @@ def extra_v_sub(df):
     classes = ['algebra','english_1','english_2', 'biology', 'history']
     plt.legend(labels=classes)
     plt.title('Subject vs Expense for Extracurricular')
+    plt.xlabel('Expense per Student on Extracurricular Activities')
+    plt.ylable('Count')
     return plt.show()
 
 def expense_per_stu(df):
@@ -134,11 +136,11 @@ def expense_per_stu(df):
     plt.hist(high.total_expend, bins = 65)
     plt.hist(low.total_expend, bins = 65)
     plt.xlim([0,35000])
-    classes = ['high EcoDis', 'Low EcoDis']
+    classes = ['High Economically Disadvanged', 'Low Economically Disadvantaged']
     plt.legend(labels=classes)
-    plt.title('Expense per student in high or low EcoDis')
-    plt.xlabel('expense per student')
-    plt.ylabel('count')
+    plt.title('Expense per Student in High or Low Econmically Disadvantaged')
+    plt.xlabel('Expense per Student')
+    plt.ylabel('Count')
     return plt.show()
 
 
