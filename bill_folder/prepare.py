@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 
 #--------------------------------------------------------------------------------------------------
 
@@ -114,3 +115,17 @@ def combine_features(df):
     df=df.drop(columns=['masters', 'doct', 'beginning_teach', 'teacher_exp_5', 'teacher_exp_11to20', 
                     'teacher_exp_21tp30', 'teacher_exp_over30'])
     return df
+
+#--------------------------------------------------------------------------------------------------
+def extra_v_sub(df):
+    plt.xticks(rotation=90)
+    plt.scatter(x = df.extracurricular_expend, y = df.algebra)
+    plt.scatter(x = df.extracurricular_expend, y = df.english_1)
+    plt.scatter(x = df.extracurricular_expend, y = df.english_2)
+    plt.scatter(x = df.extracurricular_expend, y = df.biology)
+    plt.scatter(x = df.extracurricular_expend, y = df.history)
+    classes = ['algebra','english_1','english_2', 'biology', 'history']
+    plt.legend(labels=classes)
+    plt.title('Subject vs Expense for Extracurricular')
+    
+    return plt.show()
