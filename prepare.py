@@ -131,18 +131,25 @@ def extra_v_sub(df):
     plt.grid(True, alpha=0.3, linestyle='--')
     return plt.show()
 
+
+
 def expense_per_stu(df):
-    high = df[df['econdis'] > 58.9]
-    low = df[df['econdis'] < 58.9]
-    plt.hist(high.total_expend, bins = 65, color='blue')
-    plt.hist(low.total_expend, bins = 65, color='orange')
+    
+    
+    # Low/High Economically Disadvantaged
+    high = df[df['econdis'] > df['econdis'].mean()]
+    low = df[df['econdis'] <= df['econdis'].mean()]
+    
+    # Plot histograms
+    plt.hist(high.total_expend, bins=65, ec='black', color='blue')
+    plt.hist(low.total_expend, bins=65, ec='black', color='orange')
     plt.xlim([0,35000])
     classes = ['High Economically Disadvantaged', 'Low Economically Disadvantaged']
-    plt.legend(labels=classes)
-    plt.title('Expense per Student in High or Low Econmically Disadvantaged')
-    plt.xlabel('Expense per Student')
+    plt.legend(labels=classes, title='Economically Disadvantaged')
+    plt.title('Total Expediture for High/Low Economically Disadvantaged Schools')
+    plt.xlabel('Expense(per student)')
     plt.ylabel('Count')
     plt.grid(True, alpha=0.3, linestyle='--')
-    return plt.show()
+    plt.show()
 
 
