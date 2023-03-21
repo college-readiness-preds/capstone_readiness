@@ -6,7 +6,7 @@ import pandas as pd
 ##############################################
 
 
-def prepare(df):
+def prepare_budget(df):
 
     '''Takes in full dataset cleans and returns only Per Student expenses with index set to spending category'''
 
@@ -24,7 +24,6 @@ def prepare(df):
     df.set_index('spending_category', inplace= True)
 
     return df
-
 
 
 
