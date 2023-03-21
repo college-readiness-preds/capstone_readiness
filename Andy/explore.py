@@ -29,7 +29,7 @@ def extra_subs(train):
                      'p-value': p
                      })
         
-    df = pd.DataFrame(index=['English 1', 'English 2', 'Algebra', 'Biology', 'U.S. History'] ,data=data1)
+    df = pd.DataFrame(index=['English 1', 'English 2', 'Algebra', 'Biology', 'History'] ,data=data1)
     
     return df
 
@@ -315,7 +315,7 @@ def above_avg_econdis_total_expend(train):
         
     
     # Subjects for plot
-    subjects = ['Algebra', 'English 1', 'English 2', 'Biology', 'U.S. History']
+    subjects = ['Algebra', 'English 1', 'English 2', 'Biology', 'History']
     
     df = pd.DataFrame(index=subjects, data={
         'Above Average': above,
@@ -362,7 +362,7 @@ def above_avg_econdis_total_expend(train):
         
     
     # Subjects for plot
-    subjects = ['Algebra', 'English 1', 'English 2', 'Biology', 'U.S. History']
+    subjects = ['Algebra', 'English 1', 'English 2', 'Biology', 'History']
     
     df = pd.DataFrame(index=subjects, data={
         'Above Average': above,
@@ -440,9 +440,97 @@ def correlation_stu_teach_ratio_subject(train):
                      'p-value': p
                      })
         
-    df = pd.DataFrame(index=['English 1', 'English 2', 'Algebra', 'Biology', 'U.S. History'] ,data=data1)
+    df = pd.DataFrame(index=['English 1', 'English 2', 'Algebra', 'Biology', 'History'] ,data=data1)
         #plot results
     sns.relplot(data= df, x= df['Correlation'], y= df['p-value'], hue= df.index,s=200)
-    plt.title('Correlation and Significance of Student Teacher Ratio')
     plt.grid(True, alpha=0.3, linestyle='--')
     return df
+
+
+#################################################################################################
+
+
+def eco_experience(df):
+    '''
+    this function makes a table for the statistics tests and averages for teacher exp in economically disadvantaged schools
+    '''
+    train, validate, test= tts(df)
+    train['teacher_0-10']=train['teacher_exp_0to5']+train['teacher_exp_6to10']
+    a=train[(train['econdis']>58.5)&(train['teacher_exp_11_plus']>50)]
+    b=train[(train['econdis']>58.5)&(train['teacher_0-10']>50)]
+    
+    subject=['English 1', 'English 2', 'Algebra', 'Biology', 'U.S. History']
+    
+    more11plus=[round(a.english_1.mean(),2), round(a.english_2.mean(), 2), round(a.algebra.mean(),2),
+                round(a.biology.mean(),2), round(a.history.mean(),2)]
+    less11plus=[round(b.english_1.mean(),2), round(b.english_2.mean(),2), round(b.algebra.mean(),2),
+                round(b.biology.mean(),2), round(b.history.mean(),2)]
+    
+    te1, pe1=stats.ttest_ind(a.english_1, b.english_1, alternative='greater')
+    te2, pe2=stats.ttest_ind(a.english_2, b.english_2, alternative='greater')
+    ta, pa=stats.ttest_ind(a.algebra, b.algebra, alternative='greater')
+    tb, pb=stats.ttest_ind(a.biology, b.biology, alternative='greater')
+    th, ph=stats.ttest_ind(a.history, b.history, alternative='greater')
+    
+    pval=[pe1, pe2, pa, pb, ph]
+    
+    data= pd.DataFrame(index=subject,data={
+        'Passing Rate 0-10 Years': less11plus,
+        'Passing Rate 11+ Years': more11plus,
+        'p-value': pval
+    }
+                      )
+    data=data.sort_values('p-value')
+    
+    return data
+
+################################################################################################
+
+def eco_ex_plot(df):
+    '''
+    this function plots the average passing rate of schools with majority of teachers experience
+    '''
+    ma=eco_experience(df)
+
+    plt.figure(figsize=(10,5))
+    X = ['English 1', 'English 2', 'Algebra', 'Biology', 'U.S. History']
+
+    X_axis = np.arange(len(X))
+
+    plt.bar(X_axis[0] - 0.1, ma['Passing Rate 0-10 Years'][0], 
+            0.2, label = '0-10 Years Experience', color=['blue'], ec='black')
+    plt.bar(X_axis[0] + 0.1, ma['Passing Rate 11+ Years'][0], 
+            0.2, label = '11+ Years Experience', color=['orange'], ec='black')
+
+    plt.bar(X_axis[1] - 0.1, ma['Passing Rate 0-10 Years'][1], 0.2, color=['blue'], ec='black')
+    plt.bar(X_axis[1] + 0.1, ma['Passing Rate 11+ Years'][1], 0.2, color=['orange'], ec='black')
+
+    plt.bar(X_axis[2] - 0.1, ma['Passing Rate 0-10 Years'][2], 0.2, color=['blue'], ec='black')
+    plt.bar(X_axis[2] + 0.1, ma['Passing Rate 11+ Years'][2], 0.2, color=['orange'], ec='black')
+
+    plt.bar(X_axis[3] - 0.1, ma['Passing Rate 0-10 Years'][3], 0.2, color=['blue'], ec='black')
+    plt.bar(X_axis[3] + 0.1, ma['Passing Rate 11+ Years'][3], 0.2, color=['orange'], ec='black')
+
+    plt.bar(X_axis[4] - 0.1, ma['Passing Rate 0-10 Years'][4], 0.2, color=['blue'], ec='black')
+    plt.bar(X_axis[4] + 0.1, ma['Passing Rate 11+ Years'][4], 0.2, color=['orange'], ec='black')
+
+    
+    ax = plt.gca()
+    
+    # Amount above bars
+    for p in ax.patches:
+        height = p.get_height()
+        ax.annotate('{:.0f}'.format(height), (p.get_x()+p.get_width()/2., height),
+                    ha='center', va='bottom', fontsize=11)
+    
+    plt.xticks(X_axis, X)
+    plt.xlabel("Subject")
+    plt.ylabel("Percent Passing")
+    plt.title("Economically Disadvantaged Schools Passing STAAR Subjects Based on Majority Teacher Experience")
+    plt.ylim(50, 95)
+    plt.grid(True, alpha=0.3, linestyle='--')
+    leg = plt.legend(title="Teacher Experience")
+    leg._legend_box.align = "left"
+    plt.show()
+
+    #########################################################################################

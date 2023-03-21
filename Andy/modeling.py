@@ -133,7 +133,7 @@ def model_results_plot(df):
 def modeling_visual(df):
     ma=model_results_plot(df)
 
-    plt.figure(figsize=(10,10))
+    plt.figure(figsize=(10,5))
     X = ['English 1', 'English 2', 'Algebra', 'Biology', 'U.S. History']
 
     X_axis = np.arange(len(X))

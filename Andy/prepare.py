@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+
 #--------------------------------------------------------------------------------------------------
 
 def convert_dollars_to_float(x):
@@ -114,7 +115,7 @@ def combine_features(df):
     df=df.drop(columns=['masters', 'doct', 'beginning_teach', 'teacher_exp_5', 'teacher_exp_11to20', 
                     'teacher_exp_21tp30', 'teacher_exp_over30'])
     return df
-#------------------------------------------------------------------------------------------------------
+
 def extra_v_sub(df):
     plt.xticks(rotation=90)
     plt.scatter(x = df.extracurricular_expend, y = df.algebra)
@@ -125,5 +126,19 @@ def extra_v_sub(df):
     classes = ['algebra','english_1','english_2', 'biology', 'history']
     plt.legend(labels=classes)
     plt.title('Subject vs Expense for Extracurricular')
-    
     return plt.show()
+
+def expense_per_stu(df):
+    high = df[df['econdis'] > 58.9]
+    low = df[df['econdis'] < 58.9]
+    plt.hist(high.total_expend, bins = 65)
+    plt.hist(low.total_expend, bins = 65)
+    plt.xlim([0,35000])
+    classes = ['high EcoDis', 'Low EcoDis']
+    plt.legend(labels=classes)
+    plt.title('Expense per student in high or low EcoDis')
+    plt.xlabel('expense per student')
+    plt.ylabel('count')
+    return plt.show()
+
+
