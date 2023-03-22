@@ -117,12 +117,12 @@ def combine_features(df):
     return df
 
 def extra_v_sub(df):
-    plt.xticks(rotation=90)
-    plt.scatter(x = df.extracurricular_expend, y = df.algebra)
-    plt.scatter(x = df.extracurricular_expend, y = df.english_1)
-    plt.scatter(x = df.extracurricular_expend, y = df.english_2)
-    plt.scatter(x = df.extracurricular_expend, y = df.biology)
-    plt.scatter(x = df.extracurricular_expend, y = df.history)
+    plt.xticks(rotation=45)
+    plt.scatter(x = df.extracurricular_expend, y = df.algebra, color = 'red', alpha = .5)
+    plt.scatter(x = df.extracurricular_expend, y = df.english_1, color = 'orange', alpha = .4)
+    plt.scatter(x = df.extracurricular_expend, y = df.english_2, color = 'yellow', alpha = .2)
+    plt.scatter(x = df.extracurricular_expend, y = df.biology, color = 'green', alpha = .5)
+    plt.scatter(x = df.extracurricular_expend, y = df.history, color = 'blue', alpha = .1)
     classes = ['Algebra','English 1','English 2', 'Biology', 'History']
     plt.legend(labels=classes)
     plt.title('Subject vs Expense for Extracurricular')
@@ -130,7 +130,6 @@ def extra_v_sub(df):
     plt.ylabel('Pass rate')
     plt.grid(True, alpha=0.3, linestyle='--')
     return plt.show()
-
 
 
 def expense_per_stu(df):
