@@ -127,7 +127,7 @@ def extra_v_sub(df):
     plt.legend(labels=classes)
     plt.title('Subject vs Expense for Extracurricular')
     plt.xlabel('Expense per Student on Extracurricular Activities')
-    plt.ylabel('Count')
+    plt.ylabel('Pass rate')
     plt.grid(True, alpha=0.3, linestyle='--')
     return plt.show()
 
