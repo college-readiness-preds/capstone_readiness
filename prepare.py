@@ -123,7 +123,7 @@ def extra_v_sub(df):
     plt.scatter(x = df.extracurricular_expend, y = df.english_2)
     plt.scatter(x = df.extracurricular_expend, y = df.biology)
     plt.scatter(x = df.extracurricular_expend, y = df.history)
-    classes = ['algebra','english_1','english_2', 'biology', 'history']
+    classes = ['Algebra','English 1','English 2', 'Biology', 'History']
     plt.legend(labels=classes)
     plt.title('Subject vs Expense for Extracurricular')
     plt.xlabel('Expense per Student on Extracurricular Activities')
