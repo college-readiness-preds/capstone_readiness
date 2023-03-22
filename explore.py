@@ -442,6 +442,7 @@ def correlation_stu_teach_ratio_subject(train):
         
     df = pd.DataFrame(index=['English 1', 'English 2', 'Algebra', 'Biology', 'History'] ,data=data1)
         #plot results
+    sns.set_style("whitegrid")
     graph = sns.relplot(data= df, x= df['Correlation'], y= df['p-value'], hue= df.index,s=200)
     graph.refline(y= 0.05, color= 'firebrick', linestyle= '-')
     plt.title('Correlation Significance and Strength')
