@@ -140,7 +140,7 @@ def expense_per_stu(df):
     low = df[df['econdis'] <= df['econdis'].mean()]
     
     # Plot histograms
-    plt.hist(high.total_expend, bins=65, ec='black', color='blue')
+    plt.hist(high.total_expend, bins=130, ec='black', color='blue')
     plt.hist(low.total_expend, bins=65, ec='black', color='orange')
     plt.xlim([0,35000])
     classes = ['High Economically Disadvantaged', 'Low Economically Disadvantaged']
