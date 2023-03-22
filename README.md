@@ -20,14 +20,14 @@ Our youth matters. In Texas, the State of Texas Assessment of Academic Readiness
 
 ## Executive Summary:
 **Insights**
-1. STAAR passing rate compared between schools with above/below average economically disadvantaged students.
+1. STAAR passing rate lower in schools with large proportion of economically disadvantaged students.
 2. Schools with a higher number of teachers with 11+ years of experience have a significantly higher passing rate.
 3. When comparing schools with above average economically disadvantaged student population, the schools with a higher STAAR passing rate have a lower total expenditure per student. 
 
 
 
 ## Initial Hypothesis:
-Our initial hypothesis consists of predictions of significant drivers before exploration. We predict schools that have more experienced teachers and teachers with higher education will yield higher STAAR scores. Considering teachers are paid more, in most cases, as teachers possess more years of experience, schools with a higher average salary we predict will also have higher STAAR scores. Similarly the more time a teacher can dedicate to a student, the higher the STAAR score. With this logic we predict that smaller student to teacher ratios are more favorable. For school funding, we think that the more funding a school has the higher the STAAR scores will be because of the amount of resources are able to be allocated to the students.
+Our initial hypothesis consists of predictions of significant drivers before exploration. We predict schools that have more experienced teachers and teachers with higher education will yield higher STAAR passing rates. Considering teachers are paid more, in most cases, as teachers possess more years of experience, schools with a higher average salary we predict will also have higher STAAR scores. Similarly the more time a teacher can dedicate to a student, the higher the STAAR score. With this logic we predict that smaller student to teacher ratios are more favorable. For school funding, we think that the more funding a school has the higher the STAAR scores will be because of the amount of resources are able to be allocated to the students.
 
 ## Project Plan:
 
@@ -56,7 +56,7 @@ Our initial hypothesis consists of predictions of significant drivers before exp
    * Initial questions:
        * Do schools with more economically disadvantaged students have a lower average percent passing rate for STAAR exams?
        * Do schools with teachers that have more years of experience have a better average STAAR score passing rates?
-       * Of schools with above average economically disadvantaged students, do the schools with higher average STAAR scores get more funding per student?
+       * Of schools with a large proportion of economically disadvantaged students, do the schools with higher average STAAR scores have higher expenses per student?
        * Do schools with above average economically disadvantaged students have significantly higher total expendature per student?
        * Is there a statisticaly significant correlation between the amount of extracurricular expendatures and algebra passing rates?
        * Is there a statisticaly significant correlation between student teacher ratio and all subjects passing rates?
