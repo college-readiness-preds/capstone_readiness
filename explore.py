@@ -140,7 +140,7 @@ def q2_plot(df):
     plt.ylabel("Percent Passing")
     plt.title("Percent of Students Passing STAAR Subjects Based on Teacher Experience")
     plt.ylim(60, 95)
-    plt.grid(True, alpha=0.3, linestyle='--')
+    plt.grid(True, alpha=0.3, linestyle='--', axis='y')
     leg = plt.legend(title="Teachers With 11+ Years of Experience")
     leg._legend_box.align = "left"
     plt.show()
@@ -271,7 +271,7 @@ def viz_abv_avg_staar(train):
     plt.ylabel("Percent Passing")
     plt.title("STAAR Passing Rate for Economically Disadvantaged")
     plt.ylim(20, 95)
-    plt.grid(True, alpha=0.3, linestyle='--')
+    plt.grid(True, alpha=0.3, linestyle='--', axis='y')
     leg = plt.legend(title="Economically Disadvantaged")
     leg._legend_box.align = "left"
     plt.show()
@@ -413,7 +413,7 @@ def viz_econdis_total_expend(train):
     plt.ylabel("Amount($)")
     plt.title("Total Expenditure for Economically Disadvantaged Schools")
     plt.ylim(2000, 14000)
-    plt.grid(True, alpha=0.3, linestyle='--')
+    plt.grid(True, alpha=0.3, linestyle='--', axis='y')
     leg = plt.legend(title="STAAR Passing Rate")
     leg._legend_box.align = "left"
     plt.show()
@@ -442,10 +442,10 @@ def correlation_stu_teach_ratio_subject(train):
         
     df = pd.DataFrame(index=['English 1', 'English 2', 'Algebra', 'Biology', 'History'] ,data=data1)
         #plot results
-    sns.set_style("whitegrid")
     graph = sns.relplot(data= df, x= df['Correlation'], y= df['p-value'], hue= df.index,s=200)
     graph.refline(y= 0.05, color= 'firebrick', linestyle= '-')
     plt.title('Correlation Significance and Strength')
+    plt.grid(True, alpha=0.3, linestyle='--')
     return df
 
 
@@ -530,7 +530,7 @@ def eco_ex_plot(df):
     plt.ylabel("Percent Passing")
     plt.title("Economically Disadvantaged Schools Passing STAAR Subjects Based on Majority Teacher Experience")
     plt.ylim(50, 95)
-    plt.grid(True, alpha=0.3, linestyle='--')
+    plt.grid(True, alpha=0.3, linestyle='--', axis='y')
     leg = plt.legend(title="Teacher Experience")
     leg._legend_box.align = "left"
     plt.show()

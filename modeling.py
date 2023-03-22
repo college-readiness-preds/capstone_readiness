@@ -180,7 +180,7 @@ def modeling_visual(df):
     plt.ylabel("RMSE")
     plt.title("Modeling Results")
     plt.ylim(0, 25)
-    plt.grid(True, alpha=0.3, linestyle='--')
+    plt.grid(True, alpha=0.3, linestyle='--', axis='y')
     leg = plt.legend(title="RMSE")
     leg._legend_box.align = "left"
     plt.show()
