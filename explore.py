@@ -345,9 +345,9 @@ def above_avg_econdis_total_expend(train):
         below_avg_staar = econdis_above_avg[econdis_above_avg[s] <= econdis_above_avg[s].mean()]
         
         # Total expenditure for above_avg_staar and below_average_staar
-        avg_expend_above = above_avg_staar['total_expend'].mean()
-        avg_expend_below = below_avg_staar['total_expend'].mean()
-    
+        avg_expend_above = round(above_avg_staar['total_expend'].mean(),2)
+        avg_expend_below = round(below_avg_staar['total_expend'].mean(),2)
+               
         # Above and Below total expenditures for stats test
         above_stats = above_avg_staar['total_expend']
         below_stats = below_avg_staar['total_expend']
