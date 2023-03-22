@@ -178,7 +178,7 @@ def modeling_visual(df):
     plt.xticks(X_axis, X)
     plt.xlabel("Subject")
     plt.ylabel("RMSE")
-    plt.title("Modeling Results")
+    plt.title("Linear Regression Model Results")
     plt.ylim(0, 25)
     plt.grid(True, alpha=0.3, linestyle='--', axis='y')
     leg = plt.legend(title="RMSE")
