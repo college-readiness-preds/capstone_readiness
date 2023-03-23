@@ -120,3 +120,6 @@ All data acquired from:
 
 Link to the final presentation slide deck:
 * https://www.canva.com/design/DAFdeHe75pM/qSUa86WQ0Gtg3R7mET4Lyg/view?utm_content=DAFdeHe75pM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+
+Link to the Tableau dashboard:
+* https://public.tableau.com/app/profile/andy.jensen8392/viz/CapstoneDashboard_16795800870340/Dashboard1?publish=yes
