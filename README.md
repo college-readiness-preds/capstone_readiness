@@ -9,7 +9,7 @@
 <a href="#"><img alt="seaborn" src="https://img.shields.io/badge/seaborn-65A9A8.svg?logo=pandas&logoColor=white"></a>
 <a href="#"><img alt="sklearn" src="https://img.shields.io/badge/sklearn-4b86b4.svg?logo=scikitlearn&logoColor=grey"></a>
 <a href="#"><img alt="SciPy" src="https://img.shields.io/badge/SciPy-1560bd.svg?logo=scipy&logoColor=blue"></a>
-<a href="#"><img alt="XGBoost" src="https://img.shields.io/badge/XGBoost-1560bd.svg?logo=scipy&logoColor=blue"></a>
+<a href="#"><img alt="XGBoost" src="https://img.shields.io/badge/XGBoost-1560bd.svg?logo=xgboost&logoColor=blue"></a>
 
 
 <img
